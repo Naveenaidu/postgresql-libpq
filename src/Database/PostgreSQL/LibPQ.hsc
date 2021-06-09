@@ -44,6 +44,7 @@
 {-# LANGUAGE BangPatterns               #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE DeriveDataTypeable         #-}
+{-# LANGUAGE  InterruptibleFFI          #-}
 
 module Database.PostgreSQL.LibPQ
     (
@@ -2374,7 +2375,7 @@ loUnlink connection oid
 
 
 
-foreign import ccall interruptible        "libpq-fe.h PQconnectdb"
+foreign import ccall interruptible "libpq-fe.h PQconnectdb"
     c_PQconnectdb :: CString ->IO (Ptr PGconn)
 
 foreign import ccall interruptible        "libpq-fe.h PQconnectStart"
